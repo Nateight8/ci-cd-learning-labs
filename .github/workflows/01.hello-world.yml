@@ -12,3 +12,4 @@ jobs:
 
       - name: Hello in python with no explicit bash shell
         run: print('Hello from explicit bash shell')
+        shell: python
