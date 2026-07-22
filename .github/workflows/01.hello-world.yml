@@ -6,5 +6,9 @@ jobs:
     steps:
       - name: Hello World
         run: echo "Hello World"
+
       - name: Hello in py
         run: python -c "print('Hello in python')"
+
+      - name: Hello in python with no explicit bash shell
+        run: print('Hello from explicit bash shell')
