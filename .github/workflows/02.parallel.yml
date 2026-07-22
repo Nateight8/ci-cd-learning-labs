@@ -16,5 +16,5 @@ jobs:
   security-scan:
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy to development
-        run: echo "Deploying to development"
+      - name: Security scan
+        run: echo "Scanning for vulnerabilities"

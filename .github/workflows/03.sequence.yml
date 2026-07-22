@@ -1,0 +1,22 @@
+name: Sequential pipeline
+on: workflow_dispatch
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build
+        run: echo "Building"
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Test
+        run: echo "Testing"
+
+  deploy-dev:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Deploy to development
+        run: echo "Deploying to development"
