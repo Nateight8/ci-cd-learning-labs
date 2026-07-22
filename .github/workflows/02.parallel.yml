@@ -1,0 +1,20 @@
+name: Parallel
+on: workflow_dispatch
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Lint
+        run: echo "Linting"
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test
+        run: echo "Testing"
+
+  security-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to development
+        run: echo "Deploying to development"
