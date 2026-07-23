@@ -1,0 +1,18 @@
+name: Output Demo
+on: workflow_dispatch
+jobs:
+  generate-version:
+    runs-on: ubuntu-latest
+    outputs:
+      app_version: ${{ steps.gen.outputs.app_version }}
+    steps:
+      - name: Generate app version
+        id: gen
+        run: echo "app_version=v1.0.${{ github.run_number }}" >> $GITHUB_OUTPUT
+
+  use-output:
+    runs-on: ubuntu-latest
+    needs: generate-version
+    steps:
+      - name: Use app version
+        run: echo "Version is ${{ needs.generate-version.outputs.app_version }}"

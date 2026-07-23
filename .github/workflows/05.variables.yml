@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Workflow level env
-        run: echo "$APP_ENV" # should print "workflow-level"
+        run: echo "$APP_ENV and repo var is ${{vars.APP_NAME}}" # should print "workflow-level"
 
   job-level-variables:
     runs-on: ubuntu-latest
