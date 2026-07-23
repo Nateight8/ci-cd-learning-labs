@@ -1,0 +1,8 @@
+name: Variables
+on: workflow_dispatch
+jobs:
+  print-variables:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Workflow level env vars
+        run: echo "Welcome to ${{vars.APP_NAME}} working on ${{vars.ENVIRONMENT}}"
