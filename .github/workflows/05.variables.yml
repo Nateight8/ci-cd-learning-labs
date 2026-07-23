@@ -1,8 +1,32 @@
 name: Variables
 on: workflow_dispatch
+env:
+  APP_ENV: "workflow-level"
+
 jobs:
   print-variables:
     runs-on: ubuntu-latest
     steps:
-      - name: Workflow level env vars
-        run: echo "Welcome to ${{vars.APP_NAME}} working on ${{vars.ENVIRONMENT}}"
+      - name: Workflow level env
+        run: echo "$APP_ENV" # should print "workflow-level"
+
+  job-level-variables:
+    runs-on: ubuntu-latest
+    env:
+      APP_ENV: "job-level" # overrides workflow-level
+    steps:
+      - name: Print job env
+        run: echo "$APP_ENV" # should print "job-level"
+
+  step-level-variables:
+    runs-on: ubuntu-latest
+    env:
+      APP_ENV: "job-level" # still job-level here, so the override below is visible
+    steps:
+      - name: Step overrides job
+        env:
+          APP_ENV: "step-level" # overrides job-level, same name
+        run: echo "$APP_ENV" # should print "step-level"
+
+      - name: No override here
+        run: echo "$APP_ENV" # should print "job-level" — proves the override was scoped to the previous step only
