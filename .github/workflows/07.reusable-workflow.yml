@@ -1,5 +1,12 @@
 name: Reusable Workflow
-on: workflow_call
+on:
+  workflow_call:
+    inputs:
+      name:
+        type: string
+        required: true
+        description: Name to greet
+
 jobs:
   greet:
     runs-on: ubuntu-latest
@@ -7,4 +14,4 @@ jobs:
       - name: Greeting
         run: |
           echo '*** Welcome to the Reusable Workflow ***'
-          echo 'This job was triggered by another workflow.'
+          echo 'This job was triggered by ${{inputs.name}}.'

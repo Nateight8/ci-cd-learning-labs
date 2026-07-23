@@ -3,3 +3,5 @@ on: push
 jobs:
   trigger-reusable:
     uses: ./.github/workflows/07.reusable-workflow.yml
+    with:
+      name: Nate
