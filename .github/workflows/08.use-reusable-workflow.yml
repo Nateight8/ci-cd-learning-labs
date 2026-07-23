@@ -1,0 +1,5 @@
+name: Call Reusable Workflow
+on: push
+jobs:
+  trigger-reusable:
+    uses: ./.github/workflows/07.reusable-workflow.yml
