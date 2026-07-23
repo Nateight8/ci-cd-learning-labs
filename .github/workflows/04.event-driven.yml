@@ -1,0 +1,22 @@
+name: Event-driven pipeline
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, synchronize, reopened]
+  issues:
+    types: [opened, edited, closed]
+  release:
+    types: [published]
+
+jobs:
+  handle-events:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Handle Event
+        run: |
+          echo "Event: ${{ github.event_name }}"
+          echo "Ref: ${{ github.ref }}"
+          echo "SHA: ${{ github.sha }}"
+          echo "Actor: ${{ github.actor }}"
+          echo "Repository: ${{ github.repository }}"
